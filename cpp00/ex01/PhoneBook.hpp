@@ -13,13 +13,13 @@ class Contact
         char *phone;
         char *secret;
 };
-
+ 
 class PhoneBook
 {
     public:
         Contact repertoire[8];
         int nombre;
 };
-
+   
  
 #endif
