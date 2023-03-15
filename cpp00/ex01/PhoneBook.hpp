@@ -1,5 +1,5 @@
 #ifndef PHONEBOOK_HPP
-#define PONEBOOK_HPP
+#define PHONEBOOK_HPP
 
 # include <cstring>
 # include <iostream>
@@ -7,11 +7,11 @@
 class Contact
 {
     public:
-        char *nom;
-        char *prenom;
-        char *surnom;
-        char *phone;
-        char *secret;
+        std::string nom;
+        std::string prenom;
+        std::string surnom;
+        std::string phone;
+        std::string secret;
 };
  
 class PhoneBook
