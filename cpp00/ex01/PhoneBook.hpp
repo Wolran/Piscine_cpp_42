@@ -3,6 +3,8 @@
 
 # include <cstring>
 # include <iostream>
+# include <iomanip>
+# include <cstdlib>
 
 class Contact
 {
