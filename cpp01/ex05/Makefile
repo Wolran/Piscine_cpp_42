@@ -1,4 +1,5 @@
 SRCS =			main.cpp \
+				Harl.cpp \
 
 CC =			c++
 
@@ -6,7 +7,7 @@ FLAGS =			-Wall -Wextra -Werror -std=c++98
 
 RM =			rm -f
 
-NAME =			Replace
+NAME =			Harl
 
 OBJS =			$(SRCS:.cpp=.o)
 
