@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   utils.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmuller <vmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 05:42:50 by vmuller           #+#    #+#             */
-/*   Updated: 2023/05/19 12:50:24 by vmuller          ###   ########.fr       */
+/*   Updated: 2023/05/19 12:50:15 by vmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#ifndef UTILS_HPP
+#define UTILS_HPP
 
-# include "Contact.hpp"
-# include "utils.hpp"
+# include <string>
 
-# define MAX_NB_CONTACT 8
-
-class PhoneBook
-{
-private:
-	Contact	_contacts[MAX_NB_CONTACT];
-	int		_index;
-	int		_nbContacts;
-	
-public:
-	PhoneBook(void);
-	~PhoneBook(void);
-	void addContact(void);
-	void searchContact(void) const;
-};
-
+int	arg_is_int(std::string arg);
+int	arg_is_digit(std::string arg);
+int	ft_atoi(std::string nptr);
 
 #endif

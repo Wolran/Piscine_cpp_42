@@ -6,96 +6,58 @@
 /*   By: vmuller <vmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 05:42:50 by vmuller           #+#    #+#             */
-/*   Updated: 2023/03/18 04:15:00 by vmuller          ###   ########.fr       */
+/*   Updated: 2023/05/19 12:50:24 by vmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-void if_exit(std::string str)
+PhoneBook::PhoneBook(void)
 {
-	if (str == "EXIT")
-			exit(0);
+	_index = -1;
+	_nbContacts = 0;
+	return ;
 }
 
-int main(void)
-{  
-	std::string str = "";
-	int i = 0;
-	PhoneBook P;
-	P.nombre = 0;
-	int flag = 0;
-	std::cout << "les commandes possibles sont : ADD / SEARCH / EXIT" << std::endl;
-	while (1)
+PhoneBook::~PhoneBook(void){}
+
+void PhoneBook::addContact(void)
+{
+	_index++;
+	if (_index >= MAX_NB_CONTACT)
+		_index = 0;
+	_contacts[_index].fillContactInfos();
+	if (_nbContacts < MAX_NB_CONTACT)
+		_nbContacts++;
+}
+
+void PhoneBook::searchContact(void) const
+{
+	std::string	indexStr;
+	int			indexInt;
+	
+	if (_index == -1)
 	{
-		i = i % 8;
-		std::cout << "Phone > ";
-		std::getline(std::cin, str);
-		if_exit(str);
-		if (str == "ADD")
-		{
-			std::cout << "fist name: "; 
-			std::getline(std::cin, str);
-			P.repertoire[i].nom = str;
-			std::cout << "last name: "; 
-			std::getline(std::cin, str);
-			P.repertoire[i].prenom = str;
-			std::cout << "nickname: "; 
-			std::getline(std::cin, str);
-			P.repertoire[i].surnom = str;
-			std::cout << "phone number: "; 
-			std::getline(std::cin, str);
-			P.repertoire[i].phone = str;
-			std::cout << "darkest secret: ";
-			std::getline(std::cin, str);
-			P.repertoire[i].secret = str;
-			std::cout << "le contact " << P.repertoire[i++].surnom << " à bien été enregistré" << std::endl;
-			if (P.nombre < 8)
-				P.nombre++;
-			flag = 1;
-		}
-		else if (str == "SEARCH" && flag != 0)
-		{
-			for (int j = 0; j < P.nombre; j++)
-			{
-				std::cout << "|" << j + 1;
-				if (P.repertoire[j].nom.length() >= 10)
-					std::cout << "|" << P.repertoire[j].nom.substr(0, 9) << ".";
-				else
-					std::cout << "|" << std::setw(10) << P.repertoire[j].nom;
-				if (P.repertoire[j].prenom.length() >= 10)
-					std::cout << "|" << P.repertoire[j].prenom.substr(0, 9) << ".";
-				else
-					std::cout << "|" << std::setw(10) << P.repertoire[j].prenom;
-				if (P.repertoire[j].surnom.length() >= 10)
-					std::cout << "|" << P.repertoire[j].surnom.substr(0, 9) << "." << "|" << std::endl;
-				else
-					std::cout << "|" << std::setw(10) << P.repertoire[j].surnom << "|" << std::endl;
-			}
-			std::cout << "veuillez choisir le numéro du contact dans le tableau" << std::endl;
-			std::cout << "Phone > ";
-			std::getline(std::cin, str);
-			if_exit(str);
-			int len = std::atoi(str.c_str());
-			while (len > P.nombre || len < 1)
-			{
-				std::cout << "ERROR : veuillez choisir le numéro du contact dans le tableau" << std::endl;
-				if_exit(str);
-				std::cout << "Phone > ";
-				std::getline(std::cin, str);
-				len = std::atoi(str.c_str());
-			}
-			std::cout << "first name: " << P.repertoire[len - 1].nom << std::endl;
-			std::cout << "last name: " << P.repertoire[len - 1].prenom << std::endl;
-			std::cout << "nickname: " << P.repertoire[len - 1].surnom << std::endl;
-			std::cout << "phone number: " << P.repertoire[len - 1].phone << std::endl;
-			std::cout << "darkest secret: " << P.repertoire[len - 1].secret << std::endl;
-		}
-		else if (str == "SEARCH" && flag == 0)
-			std::cout << "ERROR : liste de contact vide" << std::endl;
-		else
-			std::cout << "les commandes possibles sont : ADD / SEARCH / EXIT" << std::endl;
+		std::cout << "Phonebook is empty" << std::endl;
+		return ;
 	}
-	return 0;
-}
 
+	std::cout << "     index|first name| last name|  nickname" << std::endl;
+	for (int i = 0; i < _nbContacts; i++)
+	{
+		std::cout << std::setw(10) << i << "|";
+		_contacts[i].displayShortContactInfo();
+	}
+	
+	indexInt = -1;
+	while (indexInt < 0 || indexInt >= _nbContacts)
+	{
+		std::cout << "Enter the index of the contact to display: ";
+		std::getline(std::cin, indexStr);
+		if (!arg_is_digit(indexStr) || !arg_is_int(indexStr))
+			std::cout << "You must type in an integer." << std::endl;
+		else
+			indexInt = ft_atoi(indexStr);
+	}
+	_contacts[indexInt].displayFullContactInfo();
+}

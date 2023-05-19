@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmuller <vmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,27 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#include "PhoneBook.hpp"
 
-# include "Contact.hpp"
-# include "utils.hpp"
-
-# define MAX_NB_CONTACT 8
-
-class PhoneBook
+void displayCommands(void)
 {
-private:
-	Contact	_contacts[MAX_NB_CONTACT];
-	int		_index;
-	int		_nbContacts;
-	
-public:
-	PhoneBook(void);
-	~PhoneBook(void);
-	void addContact(void);
-	void searchContact(void) const;
-};
+	std::cout << "Enter one of the following commands:" << std::endl;
+	std::cout << "ADD - Add a new contact." << std::endl;
+	std::cout << "SEARCH - Search for a specific contact." << std::endl;
+	std::cout << "EXIT - End the program." << std::endl;
+}
 
+int main(void)
+{
+	PhoneBook phonebook;
+	std::string command;
 
-#endif
+	displayCommands();
+	while (std::getline(std::cin, command))
+	{
+		if (command == "ADD")
+			phonebook.addContact();
+		else if (command == "SEARCH")
+			phonebook.searchContact();
+		else if (command == "EXIT")
+			return (0);
+		std::cout << "Enter one of the authorized commands:" << std::endl;
+	}
+	return (0);
+}
