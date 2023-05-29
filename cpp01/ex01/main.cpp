@@ -6,7 +6,7 @@
 /*   By: vmuller <vmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 05:30:41 by vmuller           #+#    #+#             */
-/*   Updated: 2023/03/23 05:34:53 by vmuller          ###   ########.fr       */
+/*   Updated: 2023/05/29 22:42:07 by vmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 		Zombie *Zombies = zombieHorde(num, argv[2]);
 		for (int i = 0; i < num; i++)
 		{
-			std::cout << i;
+			std::cout << i << " ";
 			Zombies[i].AnnonceZombie();
 		}
 		delete[] Zombies;

@@ -6,13 +6,14 @@
 /*   By: vmuller <vmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:10:25 by vmuller           #+#    #+#             */
-/*   Updated: 2023/04/09 12:42:23 by vmuller          ###   ########.fr       */
+/*   Updated: 2023/05/29 22:55:10 by vmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int main() {
+int main() 
+{
 	Harl harl;
 	harl.complain("DEBUG");
 	harl.complain("INFO");
