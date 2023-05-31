@@ -6,7 +6,7 @@
 /*   By: vmuller <vmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:11:36 by vmuller           #+#    #+#             */
-/*   Updated: 2023/05/29 22:54:36 by vmuller          ###   ########.fr       */
+/*   Updated: 2023/05/31 16:32:02 by vmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,16 @@ void Harl::error(void)
 
 void Harl::complain(std::string level)
  {
-	void (Harl::*func_ptr)(void);
-	if (level == "DEBUG") {
-	    func_ptr = &Harl::debug;
-	}
-	else if (level == "INFO") {
-	    func_ptr = &Harl::info;
-	}
-	else if (level == "WARNING") {
-	    func_ptr = &Harl::warning;
-	}
-	else if (level == "ERROR") {
-	    func_ptr = &Harl::error;
-	}
-	else {
-	    std::cout << "Invalid complaint level" << std::endl;
-	    return;
-	}
-	(this->*func_ptr)();
+	t_type complain_function[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string input_lvl[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+
+    for (int x = 0; x < 4 ; x++)
+    {
+        if (level == input_lvl[x])
+        {
+            (this->*(complain_function[x].f))();
+            return ;
+        }
+    }
+    std::cout << "Invalid complaint level" << std::endl;
 }

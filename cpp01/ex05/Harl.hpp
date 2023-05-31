@@ -6,7 +6,7 @@
 /*   By: vmuller <vmuller@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:10:12 by vmuller           #+#    #+#             */
-/*   Updated: 2023/05/29 22:53:45 by vmuller          ###   ########.fr       */
+/*   Updated: 2023/05/31 16:29:15 by vmuller          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,10 @@ class Harl
 	public:
 		void complain(std::string level);
 };
+
+typedef struct s_type
+{
+	void (Harl::*f)(void);
+} t_type;
 
 #endif
