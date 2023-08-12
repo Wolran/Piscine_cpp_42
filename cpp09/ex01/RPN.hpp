@@ -5,6 +5,8 @@
 #include <stack>
 #include <iostream>
 #include <sstream>
+#include <cstdlib>
+
 
 int Evaluate_RPN(std::string str);
 

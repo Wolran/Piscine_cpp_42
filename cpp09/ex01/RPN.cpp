@@ -31,7 +31,8 @@ int Evaluate_RPN(std::string str)
 		}
 		else if (str[i] == '-' && full >= 2)
 		{
-			stack.push(_stack_pop(stack) - _stack_pop(stack));
+			int zero = _stack_pop(stack);
+			stack.push(_stack_pop(stack) - zero);
 			i++;
 			full--;
 		}
