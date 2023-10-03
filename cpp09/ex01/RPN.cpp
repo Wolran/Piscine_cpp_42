@@ -1,6 +1,6 @@
 #include "RPN.hpp"
 
-static int _stack_pop(std::stack<int> &stack)
+static inline int __stack_pop(std::stack<int> &stack)
 {
 	int stacking = 0;
 	stacking = stack.top();
@@ -8,7 +8,7 @@ static int _stack_pop(std::stack<int> &stack)
 	return stacking;
 }
 
-int Evaluate_RPN(std::string str)
+int Evaluate_RPN(std::string str, int *r)
 {
 	std::stack<int> stack;
 	int i = 0;
@@ -25,45 +25,51 @@ int Evaluate_RPN(std::string str)
 		}
 		else if (str[i] == '+' && full >= 2)
 		{
-			stack.push(_stack_pop(stack) + _stack_pop(stack));
+			stack.push(__stack_pop(stack) + __stack_pop(stack));
 			i++;
 			full--;
 		}
 		else if (str[i] == '-' && full >= 2)
 		{
-			int zero = _stack_pop(stack);
-			stack.push(_stack_pop(stack) - zero);
+			int zero = __stack_pop(stack);
+			stack.push(__stack_pop(stack) - zero);
 			i++;
 			full--;
 		}
 		else if (str[i] == '*' && full >= 2)
 		{
-			stack.push(_stack_pop(stack) * _stack_pop(stack));
+			stack.push(__stack_pop(stack) * __stack_pop(stack));
 			i++;
 			full--;
 		}
 		else if (str[i] == '/' && full >= 2)
 		{
-			int zero = _stack_pop(stack);
+			int zero = __stack_pop(stack);
 			if (zero == 0)
 			{
 				std::cout << "Division by zero" << std::endl;
-				exit(1);
+				while(!stack.size())
+					stack.pop();
+				return(*r = 1);
 			}
-			stack.push(_stack_pop(stack) / zero);
+			stack.push(__stack_pop(stack) / zero);
 			i++;
 			full--;
 		}
 		else
 		{
 			std::cout << "Error" << std::endl;
-			exit(1);
+			while(!stack.size())
+				stack.pop();
+			return(*r = 1);
 		}
 	}
 	if (full != 1)
 	{
 		std::cout << "Error" << std::endl;
-		exit(1);
+		while(!stack.size())
+				stack.pop();
+		return(*r = 1);
 	}
-	return _stack_pop(stack);
+	return __stack_pop(stack);
 }
