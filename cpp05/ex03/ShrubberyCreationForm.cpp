@@ -11,7 +11,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &s) : AForm(s
 	std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("unnamed", 0, 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm(target, 0, 145, 137), _target(target)
 {
 	std::cout << "ShrubberyCreationForm constructor with target called" << std::endl;
 }

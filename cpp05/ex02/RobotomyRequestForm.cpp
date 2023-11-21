@@ -12,7 +12,7 @@ RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &r) : AForm(r), _ta
 	std::cout << "RobotomyRequestForm copy constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("unnamed", 0, 72, 45), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm(target, 0, 72, 45), _target(target)
 {
 	std::cout << "RobotomyRequestForm constructor with target called" << std::endl;
 }

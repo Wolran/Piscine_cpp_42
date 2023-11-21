@@ -8,9 +8,9 @@ int	main()
 {
 	Bureaucrat				Tom("Tom", 150);
 	Bureaucrat				Platz("Platz", 1);
-	PresidentialPardonForm	form1("Macron");
-	RobotomyRequestForm		form2("Macron");
-	ShrubberyCreationForm	form3("Macron");
+	PresidentialPardonForm	form1("Form1");
+	RobotomyRequestForm		form2("Form2");
+	ShrubberyCreationForm	form3("Form3");
 
 	try
 	{

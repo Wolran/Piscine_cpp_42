@@ -1,4 +1,5 @@
 SRCS =			main.cpp \
+				Serializer.cpp \
 
 CC =			c++
 

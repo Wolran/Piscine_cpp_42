@@ -1,4 +1,5 @@
 SRCS =			main.cpp \
+				ScalarConverter.cpp \
 
 CC =			c++
 

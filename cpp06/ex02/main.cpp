@@ -46,31 +46,14 @@ void identify(Base *p)
 
 void identify(Base &p)
 {
-    try
-    {
-        dynamic_cast<A &>(p);
+    if (dynamic_cast<A *>(&p))
         std::cout << "Detecting A" << std::endl;
-    }
-    catch (const std::bad_cast &)
-    {
-        try
-        {
-            dynamic_cast<B &>(p);
-            std::cout << "Detecting B" << std::endl;
-        }
-        catch (const std::bad_cast &)
-        {
-            try
-            {
-                dynamic_cast<C &>(p);
-                std::cout << "Detecting C" << std::endl;
-            }
-            catch (const std::bad_cast &)
-            {
-                std::cout << "Unknown type" << std::endl;
-            }
-        }
-    }
+    else if (dynamic_cast<B *>(&p))
+        std::cout << "Detecting B" << std::endl;
+    else if (dynamic_cast<C *>(&p))
+        std::cout << "Detecting C" << std::endl;
+    else
+        std::cout << "Unknown type" << std::endl;
 }
 
 int main()

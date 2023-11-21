@@ -42,8 +42,8 @@ AForm	*Intern::makeForm(std::string formName, std::string formTarget)
 {
 	AForm *(Intern::*createFunctions[])(const std::string &target) const =
 	{
-		&Intern::createPresidentialPardonForm,
 		&Intern::createRobotomyRequestForm,
+		&Intern::createPresidentialPardonForm,
 		&Intern::createShrubberyCreationForm
 	};
 

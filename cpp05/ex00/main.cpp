@@ -37,6 +37,22 @@ int	main()
 	{
 		std::cout << e.what() << std::endl;
 	}
+	try
+	{
+		Tom.upGrade();
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try
+	{
+		Platz.downGrade();
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 	std::cout << Tom << std::endl;
 	std::cout << Platz << std::endl;
 	return (0);

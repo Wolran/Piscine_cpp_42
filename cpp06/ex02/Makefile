@@ -6,7 +6,7 @@ SRCS =			main.cpp \
 
 CC =			c++
 
-FLAGS =			-Wall -Wextra -Werror -std=c++98 -g3
+FLAGS =			-Wall -Wextra -Werror -std=c++98
 
 RM =			rm -f
 

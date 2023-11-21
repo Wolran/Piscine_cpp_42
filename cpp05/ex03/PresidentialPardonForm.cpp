@@ -10,7 +10,7 @@ PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &p) : AFor
 	std::cout << "PresidentialPardonForm copy constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("unnamed", 0, 25, 5), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(target, 0, 25, 5), _target(target)
 {
 	std::cout << "PresidentialPardonForm constructor with target called" << std::endl;
 }
