@@ -4,7 +4,6 @@
 #include "C.hpp"
 #include <cstdlib>
 #include <iostream>
-#include <typeinfo>
 #include <ctime>
 
 #define RANDOM_USELESS_VALUE 5
@@ -46,14 +45,33 @@ void identify(Base *p)
 
 void identify(Base &p)
 {
-    if (dynamic_cast<A *>(&p))
+    try
+    {
+        (void) dynamic_cast<A &>(p);
         std::cout << "Detecting A" << std::endl;
-    else if (dynamic_cast<B *>(&p))
+        return;
+    }
+    catch (const std::exception &e)
+    {
+    }
+    try
+    {
+        (void) dynamic_cast<B &>(p);
         std::cout << "Detecting B" << std::endl;
-    else if (dynamic_cast<C *>(&p))
+        return;
+    }
+    catch (const std::exception &e)
+    {
+    }
+    try
+    {
+        (void) dynamic_cast<C &>(p);
         std::cout << "Detecting C" << std::endl;
-    else
-        std::cout << "Unknown type" << std::endl;
+        return;
+    }
+    catch (const std::exception &e)
+    {
+    }
 }
 
 int main()
@@ -80,8 +98,11 @@ int main()
         return 1;
     }
     identify(ptr1);
+    identify(*ptr1);
     identify(ptr2);
+    identify(*ptr2);
     identify(ptr3);
+    identify(*ptr3);
 
     delete ptr1;
     delete ptr2;
