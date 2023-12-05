@@ -7,7 +7,6 @@
 #include <sstream>
 #include <cstdlib>
 
-
-int Evaluate_RPN(std::string str);
+int Evaluate_RPN(std::string str, int *r);
 
 #endif

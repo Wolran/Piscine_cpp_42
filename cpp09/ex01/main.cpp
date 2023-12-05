@@ -10,10 +10,12 @@ int main(int arc, char **arv)
 	}
 
 	int result = 0;
+	int r = 0;
 	std::string str = arv[1];
 
-	result = Evaluate_RPN(str);
-	std::cout << "Result : " << result << std::endl;
+	result = Evaluate_RPN(str, &r);
+	if (!r)
+		std::cout << "Result : " << result << std::endl;
 
 	return 1;
 }
