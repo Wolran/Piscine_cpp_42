@@ -99,19 +99,26 @@ void affMap(std::map<std::string, float> &data){
     }
 }
 
-void fileDataMap(std::map<std::string, float> &data){
+
+void fileDataMap(std::map<std::string, float> &data, int &errorCode) {
     std::string line;
     std::ifstream dataBase("data.csv");
-    while (std::getline(dataBase, line))
-    {
+
+    if (!dataBase.is_open()) {
+        std::cerr << "Erreur : le fichier data.csv n'a pas pu être ouvert." << std::endl;
+        errorCode = 1;
+        return;
+    }
+    while (std::getline(dataBase, line)) {
         data.insert(std::pair<std::string, float>(datePart(line), toFloat(line)));
     }
+    dataBase.close();
+    errorCode = 0;
 }
 
 void findBitcoinValue(std::ifstream &inpuTxt, std::map<std::string, float> &data){
     std::string line;
     std::getline(inpuTxt, line);
-    (void) data;
     if (line.find("date | value") == std::string::npos || line.length() != 12){
         std::cout << "Error: First line is false." << std::endl;
         return ;

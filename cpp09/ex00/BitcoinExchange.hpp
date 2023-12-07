@@ -8,7 +8,7 @@
 #include <sstream>
 #include <iomanip>
 
-void fileDataMap(std::map<std::string, float> &data);
+void fileDataMap(std::map<std::string, float> &data, int &errorCode);
 void findBitcoinValue(std::ifstream &inpuTxt, std::map<std::string, float> &data);
 
 #endif

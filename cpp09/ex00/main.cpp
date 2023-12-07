@@ -25,7 +25,10 @@ int main(int argc, char **argv){
         return 1;
     }
     std::map<std::string, float> inputData;
-    fileDataMap(inputData);
+    int errorCode = 0;
+    fileDataMap(inputData, errorCode);
+    if (errorCode == 1)
+        return 1;
     findBitcoinValue(inputTxt, inputData);
     return 0;
 }
